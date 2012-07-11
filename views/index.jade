@@ -1,0 +1,43 @@
+h1 MEAL PLANET
+a(href="calander.html") >>> Calander <<<
+br
+br
+form(action="/pantry", method="post")
+	div Ingredient: 
+		input(type="text", name="ingredient", style="width:200px")
+		select(name="type", class="chzn-select")
+			option(value="dairy") Food Staples
+			option(value="dairy") Dairy
+			option(value="grain/carbs") Grain/carbs
+			option(value="meat/protein") Meat/protein
+			option(value="Vegetables/Fibers") Vegetables
+			option(value="Sweetener") Sweetener
+			option(value="Fruit") Fruits
+			option(value="spices") Spices
+			option(value="baking") Baking
+			option(value="oils") Oils
+			option(value="vinegars") Vinegars
+			div Quantity: 
+		input(type="text", name="quantity", style="width:200px")
+		select(name="measure", class="chzn-select")
+			option(value="grams") Grams
+			option(value="ounces") Ounces
+			option(value="pounds") Pounds
+			option(value="cups") Cups
+			option(value="teaspoons") Teaspoons
+			option(value="tablespoons") Tablespons
+			option(value="package(s)") Packages
+			option(value="Milliliters") Milliliters
+			option(value="Pieces") Pieces
+			option(value="Bunches") Bunches
+	br
+	input(type="submit", value="Update Pantry")	
+- each item in pantry
+	- item = JSON.parse(item)
+	form(action="/del", method="post")
+		input(type="hidden",name="score",value=item.score)
+		p= item.quantity+' '+item.measure+' of '+item.ingredient+' added '
+			#{ago(item.score)}
+			input(type="submit", value="remove item")
+script(type="text/javascript")
+	$(".chzn-select").chosen()

@@ -1,0 +1,159 @@
+	html, body {
+		height:100%;	
+		max-width:1000px;
+		position:relative;
+	}
+	body {
+		background: black ;
+		overflow-y: hidden;
+		
+	}
+	body, img, table, tbody, tr, td {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.rotate, .rotate img {
+		-webkit-transform: rotateZ(180deg);
+	}
+	
+	.black {
+		background: #999;
+		
+	}
+	
+	.white {
+		background: #fff;
+	}
+	
+	.hide {
+		display:none;
+	}
+	
+	table {
+		position:relative;
+		display:inline-inline;
+		padding:10px;
+		border-spacing: 0;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;		
+	}
+	
+	tr {
+		height: 100px;
+	}
+	
+	td {
+		width:100px;
+		height:100px;
+		text-align:center;
+		border:none;
+		}
+	
+	td > img {
+		width: 90%;
+		height: 90%;
+	}
+	
+	td:hover, td:focus {
+		outline: none;
+		padding: 0;
+		margin: 0;
+	}
+		
+	.captured {
+		position:absolute;
+		top:10px;
+		width:160px;
+		background: #999;
+	}
+	
+	.captured img {
+		width:25%;
+		overflow:auto;
+	}
+	
+	.captured > button {
+		border: none;
+		width: 100%;
+	}
+	
+	.chat{
+		text-align:left;
+		width:420px;
+		background:rgba(255,255,255, .3);
+		position:absolute;
+		overflow:hidden;
+	}
+	
+	.chatlog {
+		overflow:auto;
+	}
+	
+	.input {
+		position:absolute;
+		bottom:0;
+		width:100%;
+		border-top:5px solid #000;
+		background:#fff;
+		padding: 0;
+		margin:0;
+	}
+	
+	.input > p {
+		padding:2px 0 2px 2px;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		font-size:18px;
+		line-height:18px;
+		color:#000;
+		overflow: auto;
+	}
+	
+	.input > p:focus {
+		outline: none;
+	}
+	
+	.chatlog div {
+		padding: 5px 3px;
+	}
+	
+	.chatlog p {
+		font-size:18px;
+		line-height:21px;
+		padding: 3px;
+		color:#eee;
+		display: inline;
+	}
+	
+	.chatlog h3 {
+		color: #fff;
+		display: inline;
+	}
+	.helper {
+		position:absolute;
+		width: 100px;
+		height:100px;
+	}
+	.dragImg {
+		width:100px;
+		height:100px;
+		position:fixed;
+	}
+	.fade {
+		opacity:.2;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
