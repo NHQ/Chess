@@ -28,34 +28,6 @@ function init (){
 
 		document.body.appendChild(style)
 		
-		var chatlog = $('.chatlog')
-			,	textBox = $('.input')
-			
-			function chatHTML (data, bool){
-				var friend = document.createElement('h3')
-					,	msg = document.createElement('p')
-					, box = document.createElement('div')
-				;
-				friend.textContent = bool ? 'self: ' : 'friend: ';
-				msg.textContent = data.text;
-				box.appendChild(friend)
-				box.appendChild(msg)		
-				chatlog.append(box)
-				chatlog[0].scrollTop = chatlog[0].scrollHeight;
-			}
-			
-
-		textBox.bind('keyup', function(evt){
-			if(evt.keyCode === 13){
-				var el = $('.input').children()[0];
-				var text = el.textContent;
-				socket.emit('chat', {text: text});
-				chatHTML({text: text}, true);
-				el.textContent = '';
-				$(el).focus();
-			}
-		})
-		
 		$('.captured').droppable({
 			drop: function(evt, ui){
 				var piece = ui.draggable;
@@ -116,7 +88,7 @@ function init (){
 							//piece.attr('data-checker', $self.attr('data-index'))
 							//if ($self.children().length) $self.children().appendTo($('.captured'));
 							//$self.focus().append(piece);
-							socket.emit('move', {piece: piece.id, endPoint: $self.id})
+							socket.emit('move', data)
 						}
 					} 
 				})

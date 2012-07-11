@@ -30,7 +30,7 @@ Game.prototype.setPieces = setPieces;
 
 Game.prototype.init = initBoard;
 
-Game.prototype.move = move;
+Game.prototype.move = move ;
 
 Game.prototype.reset = function(){
 	$('*').unbind()
