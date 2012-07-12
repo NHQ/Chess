@@ -14,8 +14,7 @@ window.onload = function(){
 	})
 
 	socket.on('connected', function(){
-		console.log('cnxd')
-		socket.emit('join', window.location.pathname)
+		socket.emit('join', window.location.pathname.slice(1))
 	})
 
 	socket.on('move', function (data) {
@@ -31,7 +30,7 @@ window.onload = function(){
 			,	msg = document.createElement('p')
 			, box = document.createElement('div')
 		;
-		friend.textContent = bool ? 'self: ' : 'friend: ';
+		friend.textContent = data.from;
 		msg.textContent = data.text;
 		box.appendChild(friend)
 		box.appendChild(msg)		
@@ -48,11 +47,13 @@ window.onload = function(){
 			var el = $('.input').children()[0];
 			var text = el.textContent;
 			socket.emit('chat', {text: text});
-			chatHTML({text: text}, true);
+			chatHTML({text: text, from: 'self: '});
 			el.textContent = '';
 			$(el).focus();
 		}
 	})
+	
+	/*
 	var last = Date.now();
 
 	function record(el){
@@ -61,5 +62,5 @@ window.onload = function(){
 		last = d;
 		requestAnimationFrame(loop)
 	}
-	
+	*/
 }

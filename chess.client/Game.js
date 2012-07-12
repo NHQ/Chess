@@ -33,7 +33,7 @@ Game.prototype.init = initBoard;
 Game.prototype.move = move ;
 
 Game.prototype.reset = function(){
-	$('*').unbind()
+	$('table').children().unbind()
 	new Game();
 }
 

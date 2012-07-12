@@ -45,7 +45,7 @@ function setPieces (){
 		{
 			var img = document.createElement('img');
 			$sq.append(img);
-			img.src = 'images/chesspieces/p_w.png'
+			img.src = '../images/chesspieces/p_w.png'
 			img.id = 'p' + c.join(',')
 			img.setAttribute('data-checker', c.join(',')) // id == starting position
 			img.setAttribute('data-side', 'white')
@@ -56,7 +56,7 @@ function setPieces (){
 		{
 			var img = document.createElement('img');
 			$sq.append(img);
-			img.src = 'images/chesspieces/p_b.png'
+			img.src = '../images/chesspieces/p_b.png'
 			img.id = 'p' + c.join(',')
 			img.setAttribute('data-checker', c.join(','))
 			dragnMotion(img)
@@ -73,22 +73,22 @@ function setPieces (){
 			var x = (c[1] == 1) ? 'w' : 'b'
 		
 			if ( c[0] == 1 || c[0] == 8 )
-				img.src = 'images/chesspieces/r_'+x+'.png';
+				img.src = '../images/chesspieces/r_'+x+'.png';
 			if ( c[0] == 2 || c[0] == 7 )
-				img.src = 'images/chesspieces/n_'+x+'.png';
+				img.src = '../images/chesspieces/n_'+x+'.png';
 			if ( c[0] == 3 || c[0] == 6 )
-				img.src = 'images/chesspieces/b_'+x+'.png';
+				img.src = '../images/chesspieces/b_'+x+'.png';
 			if ( c[0] == 4 && c[1] == 1 ){
-				img.src = 'images/chesspieces/k_'+x+'.png';				
+				img.src = '../images/chesspieces/k_'+x+'.png';				
 			}
 			if ( c[0] == 5 && c[1] == 1 ){
-				img.src = 'images/chesspieces/q_w.png';				
+				img.src = '../images/chesspieces/q_w.png';				
 			}
 			if ( c[0] == 4 && c[1] == 8 ){
-				img.src = 'images/chesspieces/k_b.png';				
+				img.src = '../images/chesspieces/k_b.png';				
 			}
 			if ( c[0] == 5 && c[1] == 8 ){
-				img.src = 'images/chesspieces/q_b.png';				
+				img.src = '../images/chesspieces/q_b.png';				
 			}
 		}
 

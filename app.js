@@ -34,10 +34,11 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Routes
+// Routes	
 
-app.get('/', function(req, res){
-	res.redirect('/chess.html')
+app.get('/game/:id', function(req, res){
+	res.render('index')
+//	res.redirect('/chess.html')
 })
 
 app.listen(3001);
