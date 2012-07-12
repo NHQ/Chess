@@ -4,7 +4,7 @@ window.onload = function(){
 	
 	new Game();
 	
-	window.socket = io.connect('http://localhost:3001');
+	window.socket = io.connect('http://localhost:3301');
 
 	socket.on('reset', window.game.reset)
 
