@@ -55,11 +55,11 @@ function init (){
 				var className, cell = row.insertCell(0);
 											
 				if (i%2){
-					className = (j%2) ? 'white' : 'black'
+					className = (j%2) ? 'black' : 'white'
 				}
 			
 				else {
-					className = (j%2) ? 'black' : 'white'
+					className = (j%2) ? 'white' : 'black'
 				}
 			
 				cell.setAttribute('tabindex', i * j);
