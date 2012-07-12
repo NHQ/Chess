@@ -41,7 +41,7 @@ app.get('/game/:id', function(req, res){
 //	res.redirect('/chess.html')
 })
 
-app.listen(3001);
+app.listen(3301);
 console.log("Express server listening on port %d", app.address().port);
 
 io.sockets.on('connection', sockPuppet)
