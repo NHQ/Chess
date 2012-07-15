@@ -1,4 +1,5 @@
-window.Game = require('./Game.js')
+window.Game = require('./Game.js');
+var statsArray = require('stats-array');
 
 window.onload = function(){
 	

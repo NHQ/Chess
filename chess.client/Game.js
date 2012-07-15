@@ -1,6 +1,8 @@
 var	setPieces = require('./setPieces.js')
-	,	initBoard = require('./init.js')
+	,	init = require('./init.js')
 	,	move = require('./handleMove.js')
+	,	initBoard = require('./initGameLogic.js')
+	, setGameBoard = require('./setGameBoard.js')
 ;
 
 function Game (moves){
@@ -26,9 +28,13 @@ Game.prototype.rotate = function(){
 	}
 };
 
+Game.prototype.initGameLogic = initGameLogic;
+
+Game.prototype.initBoard = initBoard;
+
 Game.prototype.setPieces = setPieces;
 
-Game.prototype.init = initBoard;
+Game.prototype.init = init;
 
 Game.prototype.move = move ;
 

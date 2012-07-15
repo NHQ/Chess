@@ -1,16 +1,22 @@
-table#table.default
-div.captured
-	button(type='submit', onclick='game._reset()') RESET PIECES
-	button(type='submit', onclick='game.rotate()') ROTATE BOARD
-div.chat
-	div.chatlog
-	div.input
-		p(contenteditable='true')
+!!!
+html
+	head
+		title HTML5 Chess Set
+		link(rel='stylesheet', href='../stylesheets/style.css')
+	body
+		table#table.default
+		div.captured
+			button(type='submit', onclick='game._reset()') RESET PIECES
+			button(type='submit', onclick='game.rotate()') ROTATE BOARD
+		div.chat
+			div.chatlog
+			div.input
+				p(contenteditable='true')
 
 
-script(type="text/javascript", src="../javascripts/jquery-1.5.1.min.js")
-script(type="text/javascript", src="../javascripts/underscore-min.js")
-script(type="text/javascript", src="../javascripts/jquery-ui-1.8.14.custom.min.js")
-script(type="text/javascript", src="../javascripts/raf.js")
-script(type="text/javascript", src="../socket.io/socket.io.js")
-script(type="text/javascript", src="../browserify.js")
+		script(type="text/javascript", src="../javascripts/jquery-1.5.1.min.js")
+		script(type="text/javascript", src="../javascripts/underscore-min.js")
+		script(type="text/javascript", src="../javascripts/jquery-ui-1.8.14.custom.min.js")
+		script(type="text/javascript", src="../javascripts/raf.js")
+		script(type="text/javascript", src="../socket.io/socket.io.js")
+		script(type="text/javascript", src="../browserify.js")

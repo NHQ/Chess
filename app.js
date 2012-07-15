@@ -1,48 +1,38 @@
-
-/**
- * Module dependencies.
- */
-
-var express = require('express'),
-		app = express.createServer(),
-		jade = require('jade'),
-		io = require('socket.io').listen(app),
-		sockPuppet = require('./sockPuppet.js'),
-		browserify = require('browserify'),
-		bundle = browserify(__dirname + '/chess.client/index.js')
+var express = require('express')
+  , routes = require('./routes')
+  , http = require('http')
+	,	app = express.createServer()
+	, jade = require('jade')
+	, io = require('socket.io')
+	, sockPuppet = require('./sockPuppet.js')
+	, browserify = require('browserify')
+	, bundle = browserify(__dirname + '/chess.client/index.js')
 ;
 
-// Configuration
+var app = express();
 
 app.configure(function(){
+  app.set('port', process.env.PORT || 3301);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser());
-  app.use(express.session({ secret: 'your secret here' }));
-  app.use(app.router);
 	app.use(bundle);
+  app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler());
 });
 
-app.configure('production', function(){
-  app.use(express.errorHandler()); 
+app.get('/', routes.index);
+
+var server = http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
 });
 
-// Routes	
-
-app.get('/game/:id', function(req, res){
-	res.render('index')
-//	res.redirect('/chess.html')
-})
-
-app.listen(3301);
-console.log("Express server listening on port %d", app.address().port);
-
-io.sockets.on('connection', sockPuppet)
+io.listen(server).sockets.on('connection', sockPuppet)
 

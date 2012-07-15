@@ -7,9 +7,7 @@ function move (data){
 	var piece = $(a)
 		,	square = $(b)
 	;
-	
-	console.log(data, piece, square)
-	
+		
 	piece.attr('data-checker', square.attr('data-index'))
 	if (square.children().length) square.children().appendTo($('.captured'));
 	square.append(piece);	

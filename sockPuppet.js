@@ -54,7 +54,7 @@ module.exports = function(socket){
 					else
 					{
 						player.emit('chat', {text: 'There are already 2 players here. I will be disconnected' + game .id, from: 'self: '})
-						player.disconnect();	
+//						player.disconnect();	
 					}
 				break;
 				default:

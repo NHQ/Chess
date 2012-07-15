@@ -83,7 +83,7 @@ function init (){
 						}
 						else
 						{
-							var data = {piece: piece[0].id, endPoint: $self[0].id};
+							var data = {piece: piece[0].id, start: piece.attr('data-checker'), endPoint: $self[0].id};
 							game.move(data);
 							//piece.attr('data-checker', $self.attr('data-index'))
 							//if ($self.children().length) $self.children().appendTo($('.captured'));
