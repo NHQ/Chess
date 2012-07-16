@@ -2,7 +2,8 @@ var	setPieces = require('./setPieces.js')
 	,	init = require('./init.js')
 	,	move = require('./handleMove.js')
 	,	initBoard = require('./initGameLogic.js')
-	, setGameBoard = require('./setGameBoard.js')
+        ,       setGameBoard = require('./setGameBoard.js')
+            , initGameLogic = require('./initGameLogic')
 ;
 
 function Game (moves){

@@ -15,6 +15,8 @@ app.configure(function(){
   app.set('port', process.env.PORT || 3301);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.use(express.cookieParser());
+  app.use(express.session({secret: 'cocofarts'}));
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -27,7 +29,7 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
+app.get('/board/:gameID', routes.board);
 app.get('/', routes.index);
 
 var server = http.createServer(app).listen(app.get('port'), function(){

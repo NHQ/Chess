@@ -25,7 +25,6 @@ module.exports = function(socket){
 			Boards[board] = new Game(board, player)
 			player.emit('chat', {text: 'I am connected to game /' + Boards[board].id, from: 'self: '})
 		}
-		
 		else
 		{
 			var game = Boards[board];
