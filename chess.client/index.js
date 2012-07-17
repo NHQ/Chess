@@ -2,7 +2,7 @@ window.Game = require('./Game.js');
 var statsArray = require('stats-array');
 
 window.onload = function(){
-	
+		
 	new Game();
 	
 	window.socket = io.connect('http://'+window.location.host);

@@ -2,6 +2,10 @@ module.exports = init;
 
 function init (){
 	
+		$(document).bind('touchmove', function(e){
+			e.preventDefault();
+		})
+	
 		var winX = $('body').width(), winY = window.innerHeight;
 
 		var checker = Math.floor((Math.min(winX, winY) - 20) / 8)
