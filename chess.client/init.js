@@ -73,6 +73,7 @@ function init (){
 				cell.setAttribute('data-index', [j,i].join(','))
 			
 				$(cell).droppable({
+					tolerance: 'pointer',
 					drop: function(evt, ui){
 						var $self = $(this);
 						var piece = ui.draggable;

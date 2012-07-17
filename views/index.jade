@@ -10,7 +10,7 @@ html
 			button(type='submit', onclick='game._reset()') RESET PIECES
 			button(type='submit', onclick='game.rotate()') ROTATE BOARD
 			button(type='submit', onclick='game.clearBoard()') CLEAR PIECES
-			button(type='submit', onclick='window.location.href = window.location.origin') NEW BOARD
+			button(type='submit', onclick='window.location.href = "http://" + window.location.host') NEW BOARD
 			div(class='captured', id='captured', data-index='x')
 			div.chat
 				div.chatlog
