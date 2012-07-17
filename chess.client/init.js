@@ -6,37 +6,41 @@ function init (){
 
 		var checker = Math.floor((Math.min(winX, winY) - 20) / 8)
 			, style = document.createElement('style');
-		
+		checker = Math.min(checker, 100);
 		style.textContent = 'tr {height:'+checker+'px;} td {height:'+checker+'px; width:'+checker+'px;}';
 		
 		var boardWidth = (checker * 8) + 30
-			,	chatWidth = rightLeft = winX - boardWidth
+			,	chatWidth = 320
 			,	right = 0;
 		
 		style.textContent += 'table {width:'+boardWidth+'px;}'
-		
+		style.textContent += '.sidebar{left:'+boardWidth+'px}'
 		style.textContent += '.captured{left:'+boardWidth+'px;}'
-		style.textContent += '.chatlog{height:'+checker*3+'px;}'
-		if( rightLeft < 320)
-		{
-			chatWidth = 320;
-			right = -340;
-			style.textContent += '.chat{left:'+boardWidth+'px;top:'+(10+(checker*4))+'px;}'
-		}
+//		style.textContent += '.chatlog{height:'+checker*3+'px;}'
 
-		style.textContent += '.chat {height:'+(checker * 4)+'px;width:'+chatWidth+'px;} .input {height:'+(checker - 5)+'px;}'
+	//	style.textContent += '.chat {height:'+(checker * 4)+'px;width:'+chatWidth+'px;} .input {height:'+(checker - 5)+'px;}'
 
 		document.body.appendChild(style)
 		
 		$('.captured').droppable({
 			drop: function(evt, ui){
+				var $self = $(this);
 				var piece = ui.draggable;
 				piece.css({
 					top: 0,
 					left: 0,
 					position: 'relative'
-				})
-				$(this).append(piece)
+				});
+				if ($self.attr('data-index') == piece.attr('data-checker')) 
+				{
+					return;
+				}
+				else
+				{
+					var data = {piece: piece[0].id, start: piece.attr('data-checker'), endPoint: $self[0].id};
+					game.move(data);
+					socket.emit('move', data)
+				}
 			}
 		})
 
@@ -85,9 +89,6 @@ function init (){
 						{
 							var data = {piece: piece[0].id, start: piece.attr('data-checker'), endPoint: $self[0].id};
 							game.move(data);
-							//piece.attr('data-checker', $self.attr('data-index'))
-							//if ($self.children().length) $self.children().appendTo($('.captured'));
-							//$self.focus().append(piece);
 							socket.emit('move', data)
 						}
 					} 

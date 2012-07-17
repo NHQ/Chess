@@ -14,6 +14,11 @@ window.onload = function(){
 		// game.kibitz()
 	})
 
+	socket.on('goToNew', function(){
+		var redirect = window.location.origin || 'http://' + window.location.host
+		window.location.href = redirect;
+	})
+
 	socket.on('connected', function(){
 		socket.emit('join', window.location.pathname.slice(1))
 	})
@@ -47,8 +52,8 @@ window.onload = function(){
 		if(evt.keyCode === 13){
 			var el = $('.input').children()[0];
 			var text = el.textContent;
-			socket.emit('chat', {text: text});
-			chatHTML({text: text, from: 'self: '});
+			socket.emit('chat', {text: text, from: 'opponent: '});
+			chatHTML({text: text, from: 'me: '});
 			el.textContent = '';
 			$(el).focus();
 		}

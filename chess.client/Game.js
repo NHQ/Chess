@@ -40,15 +40,20 @@ Game.prototype.init = init;
 Game.prototype.move = move ;
 
 Game.prototype.reset = function(){
-	$('table').children().unbind()
+	$('table').children().unbind();
+	$('#captured').empty()
 	new Game();
 }
 
+Game.prototype.clearBoard = function(){
+	var self = this;
+	$('td > img').each(function(e,i){
+		self.move({piece: i.id, endPoint: 'captured'})
+	})
+}
+
 Game.prototype._reset = function(){
-	var x = confirm('Reset pieces? This will effect your oppnents board.');
-	if(x) 
-	{
-		window.socket.emit('reset')
+		// removed window.confirm
+	
 		this.reset();
-	}
 }

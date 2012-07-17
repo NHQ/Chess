@@ -5,13 +5,17 @@ html
 		link(rel='stylesheet', href='../stylesheets/style.css')
 	body
 		table#table.default
-		div.captured
+		div.sidebar
+			h1 Auto-Chess.com
 			button(type='submit', onclick='game._reset()') RESET PIECES
 			button(type='submit', onclick='game.rotate()') ROTATE BOARD
-		div.chat
-			div.chatlog
-			div.input
-				p(contenteditable='true')
+			button(type='submit', onclick='game.clearBoard()') CLEAR PIECES
+			button(type='submit', onclick='window.location.href = window.location.origin') NEW BOARD
+			div(class='captured', id='captured', data-index='x')
+			div.chat
+				div.chatlog
+				div.input
+					p(contenteditable='true')
 
 
 		script(type="text/javascript", src="../javascripts/jquery-1.5.1.min.js")
