@@ -1,0 +1,62 @@
+.chessClock {
+	position:relative;
+	width:320px;
+	height:70px;
+	background:#333;
+	color:#fff;
+}
+.glyphClock {
+	width:50px;
+	height:50px;
+	background:url(red.clock.svg) no-repeat;
+	background-size:50px;
+	position:absolute;
+}
+.glyphClock:hover {
+	cursor:pointer;
+}
+.chessClock > * {
+	padding:10px;		
+}
+
+.chessClock.on > .clockoff {
+	display:none;
+}
+.chessClock.on.config > .timer {
+	display:none;
+}
+#setTime {
+	font-size:31px;
+}
+
+.syncStart {
+	position:absolute;
+	left:226px;
+	top:13px;
+}
+
+.syncStart button {
+	width:100px;
+	height:42px;
+	font-size:14px;
+}
+
+#setTime input {
+	background:#fff;
+	width:55px;
+	text-align:right;
+	font-size:31px;
+	color:#333;
+}
+
+.inputs {
+	position:absolute;
+	left:74px;
+}
+
+#setTime .setTimer {
+	display:inline-block;
+	width:50px;
+	height:50px;
+	border:1px solid red;
+}

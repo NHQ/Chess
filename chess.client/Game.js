@@ -2,8 +2,9 @@ var	setPieces = require('./setPieces.js')
 	,	init = require('./init.js')
 	,	move = require('./handleMove.js')
 	,	initBoard = require('./initGameLogic.js')
-        ,       setGameBoard = require('./setGameBoard.js')
-            , initGameLogic = require('./initGameLogic')
+  , setGameBoard = require('./setGameBoard.js')
+  , initGameLogic = require('./initGameLogic')
+	,	clock = require('./setClock.js')
 ;
 
 function Game (moves){
@@ -17,6 +18,8 @@ function Game (moves){
 }
 
 module.exports = Game;
+
+Game.prototype.setClock = setClock;
 
 Game.prototype.rotate = function(){
 	if(_.contains(this.board.classList, 'rotate'))
