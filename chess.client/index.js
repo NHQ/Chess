@@ -27,9 +27,38 @@ window.onload = function(){
 		game.move(data)
 	});
 
-
 	var chatlog = $('.chatlog')
 		,	textBox = $('.input')
+		
+	var sync = document.getElementById('sixtysecond')
+		, ms = document.getElementById('msbutton')
+		, min = document.getElementById('min')
+		,	sec = document.getElementById('sec')
+	;
+
+	$(sync, ms).click(function(e){
+		var m = min.value
+			,	s = sec.value
+		window.game.setClock();
+		socket.emit( 'syncRSVP', {minutes: m, seconds: s} )
+	})
+	
+	socket.on('your move', function(){window.game.clock.start()})
+	
+	socket.on('syncRSVP', function(data){
+		
+		console.log(data)
+		
+		var m = data.minutes
+			,	s = data.seconds
+		;
+		
+		min.value = m;
+		sec.value = s;
+		window.game.setClock();
+		socket.emit('your move')
+	})
+	
 		
 	function chatHTML (data, bool){
 		var friend = document.createElement('h3')

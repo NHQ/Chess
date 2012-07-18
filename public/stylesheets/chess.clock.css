@@ -1,14 +1,15 @@
 .chessClock {
+	margin-top:10px;
 	position:relative;
 	width:320px;
 	height:70px;
-	background:#333;
+	background:#000;
 	color:#fff;
 }
 .glyphClock {
 	width:50px;
 	height:50px;
-	background:url(red.clock.svg) no-repeat;
+	background:url(../images/green.clock.svg) no-repeat;
 	background-size:50px;
 	position:absolute;
 }
@@ -19,20 +20,21 @@
 	padding:10px;		
 }
 
-.chessClock.on > .clockoff {
+.chessClock.standard  #countdown {
 	display:none;
 }
-.chessClock.on.config > .timer {
+.chessClock.countdown #standard {
 	display:none;
 }
-#setTime {
+
+.setTime, .showtime {
 	font-size:31px;
 }
 
 .syncStart {
 	position:absolute;
-	left:226px;
-	top:13px;
+	left:220px;
+	top:11px;
 }
 
 .syncStart button {
@@ -41,12 +43,19 @@
 	font-size:14px;
 }
 
-#setTime input {
+.setTime input, .showtime input {
 	background:#fff;
-	width:55px;
 	text-align:right;
 	font-size:31px;
 	color:#333;
+}
+
+.setTime input {
+	width:46px;
+}
+
+.showtime input {
+	width:140px;
 }
 
 .inputs {
@@ -54,7 +63,7 @@
 	left:74px;
 }
 
-#setTime .setTimer {
+.setTime .setTimer {
 	display:inline-block;
 	width:50px;
 	height:50px;

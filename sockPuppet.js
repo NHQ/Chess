@@ -90,6 +90,18 @@ module.exports = function(socket){
 		}
 	})
 	
+	player.on('your move', function(){
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('your move');
+		return
+	})
+	
+	player.on('syncRSVP', function(data){
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('syncRSVP', data);
+		return
+	})
+	
 	player.on('chat', function(data){
 		var opponent = player.opponent();
 		if (opponent) opponent.emit('chat', data);

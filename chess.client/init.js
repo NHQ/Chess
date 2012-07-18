@@ -19,7 +19,7 @@ function init (){
 		
 		style.textContent += 'table {width:'+boardWidth+'px;}'
 		style.textContent += '.sidebar{left:'+boardWidth+'px}'
-		style.textContent += '.captured{left:'+boardWidth+'px;}'
+//		style.textContent += '.captured{left:'+boardWidth+'px;}'
 //		style.textContent += '.chatlog{height:'+checker*3+'px;}'
 
 	//	style.textContent += '.chat {height:'+(checker * 4)+'px;width:'+chatWidth+'px;} .input {height:'+(checker - 5)+'px;}'

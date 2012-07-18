@@ -11,8 +11,12 @@ function Timer (minutes, seconds, callback){
 	time.init = function(){
 		
 		this.emit = callback;
+		
+		this.minutes = minutes;
+		
+		this.seconds = seconds;
 					
-		this.clock = (seconds * 100) + (minutes * 6000) // total time in 1/100th seconds 
+		this.clock = (this.seconds * 100) + (this.minutes * 6000) // total time in 1/100th seconds 
 		
 		this.progress = false;
 		
@@ -34,7 +38,7 @@ function Timer (minutes, seconds, callback){
 				sec = Math.floor((self.clock % 6000) / 100)
 				;
 		
-		self.emit(min, sec, self.clock / 100, false)
+		self.emit(min, sec, self.clock, false)
 								
 	}
 	
@@ -56,7 +60,7 @@ function Timer (minutes, seconds, callback){
 	
 	time.end = function(){
 		
-		self.emit(0, 0, 0, true)
+		this.emit(0, 0, 0, true)
 	
 	}
 	

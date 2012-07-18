@@ -4,7 +4,7 @@ var	setPieces = require('./setPieces.js')
 	,	initBoard = require('./initGameLogic.js')
   , setGameBoard = require('./setGameBoard.js')
   , initGameLogic = require('./initGameLogic')
-	,	clock = require('./setClock.js')
+	,	setClock = require('./clock.js')
 ;
 
 function Game (moves){
