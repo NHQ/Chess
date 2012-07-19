@@ -8,12 +8,13 @@
 		overflow-y: hidden;
 		max-width: 1150px;
 	}
-	body, img, table, tbody, tr, td {
+	body, img, div {
 		margin: 0;
 		padding: 0;
 	}
 		
 	.rotate, .rotate img {
+		tranform-origin: 50% 50%;	
 		-webkit-transform: rotate(180deg);
 		-moz-transform: rotate(180deg);
 		-o-transform: rotate(180deg);
@@ -32,36 +33,27 @@
 		display:none;
 	}
 	
-	table {
-		position:relative;
-		display:inline-inline;
-		padding:10px;
+	#table {
+		position:absolute;
+		top:10px;
+		left:10px;
 		border-spacing: 0;
 		-moz-user-select: none;
 		-webkit-user-select: none;
-		user-select: none;		
+		user-select: none;
+		-webkit-tranform-origin:50% 50%;
 	}
 	
-	tr {
-		height: 100px;
-	}
-	
-	td {
+	#table > div {
 		width:100px;
 		height:100px;
-		text-align:center;
 		border:none;
-		}
-	
-	td > img {
-		width: 90%;
-		height: 90%;
+		position:absolute;
 	}
 	
-	td:hover, td:focus {
-		outline: none;
-		padding: 0;
-		margin: 0;
+	#table div > img {
+		width: 100%;
+		height: 100%;
 	}
 		
 	.captured {
@@ -69,7 +61,7 @@
 		top:10px;
 		width:100%;
 		min-height:80px;
-		background: #333;
+		background: #eee;
 	}
 	
 	.captured img {
@@ -77,6 +69,8 @@
 		overflow:auto;
 	}
 	button {
+		position:relative;
+		height:40px;
 		width:80px;
 	}
 	button:hover {

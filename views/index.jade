@@ -5,13 +5,13 @@ html
 		link(rel='stylesheet', href='../stylesheets/style.css')
 		link(rel='stylesheet', href='../stylesheets/chess.clock.css')
 	body
-		table#table.default
+		div#table.default
 		div.sidebar
-			h1 Auto-Chess.com
-			button(type='submit', onclick='game._reset()') RESET PIECES
+			h1 freebrrrd
+			button(type='submit', onclick='game._reset()') RESET BOARD
 			button(type='submit', onclick='game.rotate()') ROTATE BOARD
 			button(type='submit', onclick='game.clearBoard()') CLEAR PIECES
-			button(type='submit', onclick='window.location.href = "http://" + window.location.host') NEW BOARD
+			button(type='submit', onclick='window.location.href = "http://" + window.location.host') GO TO NEW LINK
 			include ./clock.html
 			div(type='submit', class='captured', id='captured', data-index='x')
 			div.chat

@@ -1,14 +1,12 @@
-module.exports = setStage;
+module.exports = Board;
 
-function setStage (){
+function Board (x,y){
 
-	var grid = emptyMatrix(8,8);
-	
-	var grid = this.setGameBoard(grid);
-		
+	var grid = (x && y) ? matrix(x,y) : matrix(8,8);
+			
 	return grid
 	
-	function emptyMatrix(x,y){
+	function matrix(x,y){
 		var arr = []
 			,	n = x * y
 		;
@@ -28,7 +26,7 @@ function setStage (){
 			zerone = !zerone
 		}
 		
-		return arr.toMatrix(8)
+		return arr.toMatrix(x)
 		
 	};
 		

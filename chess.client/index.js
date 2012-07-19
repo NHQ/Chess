@@ -88,6 +88,10 @@ window.onload = function(){
 		}
 	})
 	
+	$(document).bind('touchmove', function(e){
+		e.preventDefault();
+	})
+	
 	/*
 	var last = Date.now();
 

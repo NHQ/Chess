@@ -58,6 +58,12 @@ function Timer (minutes, seconds, callback){
 	
 	}
 	
+	time.reset = function(){
+		
+		this.emit(this.minutes, this.seconds, this.clock, false, true) // reset clock
+		
+	}
+	
 	time.end = function(){
 		
 		this.emit(0, 0, 0, true)

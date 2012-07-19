@@ -20,13 +20,13 @@ function setClock(){
 		millisecond.value = ms
 		if(buzz) 
 		{
-			$(window).unbind('keydown');
+			$('body').unbind('keydown');
 			alert('game over');
 			return 
 		}
 	}
 		
-	$(window).bind('keydown', function(e){
+	$('body').bind('keydown', function(e){
 		console.log(e.originalEvent.srcElement.localName)
 		if(e.originalEvent.srcElement.localName == 'p'){
 			return

@@ -3,7 +3,6 @@ module.exports = move
 function move (data){
 	var a = document.getElementById(data.piece)	
 	var b = document.getElementById(data.endPoint)	
-	console.log(data.piece)
 	var piece = $(a)
 		,	square = $(b)
 	;
