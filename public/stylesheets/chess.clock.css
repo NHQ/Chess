@@ -6,10 +6,18 @@
 	background:#000;
 	color:#fff;
 }
+.chessClock {
+	margin-top:10px;
+	position:relative;
+	width:270px;
+	height:70px;
+	background:#333;
+	color:#fff;
+}
 .glyphClock {
 	width:50px;
 	height:50px;
-	background:url(../images/green.clock.svg) no-repeat;
+	background:url(../images/red.clock.svg) no-repeat;
 	background-size:50px;
 	position:absolute;
 }

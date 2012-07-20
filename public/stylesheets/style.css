@@ -7,6 +7,9 @@
 		background: black ;
 		overflow-y: hidden;
 		max-width: 1150px;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
 	}
 	body, img, div {
 		margin: 0;
