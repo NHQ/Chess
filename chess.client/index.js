@@ -1,5 +1,9 @@
 window.Game = require('./Game.js');
-var statsArray = require('stats-array');
+
+var statsArray = require('stats-array')
+	,	setClockControls = require('./controls/clock.controls.js')
+	,	setChatControls = require('./controls/chat.controls.js')
+;
 
 window.onload = function(){
 		
@@ -7,11 +11,13 @@ window.onload = function(){
 	
 	window.socket = io.connect('http://'+window.location.host);
 
+	setClockControls()
+	setChatControls()
+
 	socket.on('reset', window.game.reset)
 
 	socket.on('disconnect', function(){
 		socket.disconnect();
-		// game.kibitz()
 	})
 
 	socket.on('goToNew', function(){
@@ -26,80 +32,30 @@ window.onload = function(){
 	socket.on('move', function (data) {
 		game.move(data)
 	});
-
-	var chatlog = $('.chatlog')
-		,	textBox = $('.input')
-		
-	var sync = document.getElementById('sixtysecond')
-		, ms = document.getElementById('msbutton')
-		, min = document.getElementById('min')
-		,	sec = document.getElementById('sec')
-	;
-
-	$(sync, ms).click(function(e){
-		var m = min.value
-			,	s = sec.value
-		window.game.setClock();
-		socket.emit( 'syncRSVP', {minutes: m, seconds: s} )
-	})
 	
 	socket.on('your move', function(){window.game.clock.start()})
 	
-	socket.on('syncRSVP', function(data){
-		
-		console.log(data)
-		
-		var m = data.minutes
-			,	s = data.seconds
-		;
-		
-		min.value = m;
-		sec.value = s;
-		window.game.setClock();
-		socket.emit('your move')
+	socket.on('clearBoard', function(){
+		game.clearBoard.call(game);
 	})
 	
-		
-	function chatHTML (data, bool){
-		var friend = document.createElement('h3')
-			,	msg = document.createElement('p')
-			, box = document.createElement('div')
-		;
-		friend.textContent = data.from;
-		msg.textContent = data.text;
-		box.appendChild(friend)
-		box.appendChild(msg)		
-		chatlog.append(box)
-		chatlog[0].scrollTop = chatlog[0].scrollHeight;
-	}
-	
-	socket.on('chat', function(data){
-		chatHTML(data);
+	socket.on('syncGameBoard', function(data){
+//		console.log(data);
 	})
-		
-	textBox.bind('keyup', function(evt){
-		if(evt.keyCode === 13){
-			var el = $('.input').children()[0];
-			var text = el.textContent;
-			socket.emit('chat', {text: text, from: 'opponent: '});
-			chatHTML({text: text, from: 'me: '});
-			el.textContent = '';
-			$(el).focus();
+	
+	socket.on('initSync', function(){
+		socket.emit('syncGameBoard', JSON.stringify(game.board))
+		if(game.clock)
+		{
+			var data = Object.create(null)
+			data.seconds = game.clock.config.seconds
+			data.minutes = game.clock.config.minutes
+			socket.emit('syncGameClock', data)			
 		}
-	})
+	})	
+		
 	
 	$(document).bind('touchmove', function(e){
 		e.preventDefault();
 	})
-	
-	/*
-	var last = Date.now();
-
-	function record(el){
-		var d = Date.now()
-		console.log(d - last);
-		last = d;
-		requestAnimationFrame(loop)
-	}
-	*/
 }

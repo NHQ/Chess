@@ -4,15 +4,13 @@ html
 		title HTML5 Chess Set
 		link(rel='stylesheet', href='../stylesheets/style.css')
 		link(rel='stylesheet', href='../stylesheets/chess.clock.css')
+		link(rel='stylesheet', href='../stylesheets/sidebar.css')
 	body
 		div#table.default
 		div.sidebar
-			h1 freebrrrd
-			button(type='submit', onclick='game._reset()') RESET BOARD
-			button(type='submit', onclick='game.rotate()') ROTATE BOARD
-			button(type='submit', onclick='game.clearBoard()') CLEAR PIECES
-			button(type='submit', onclick='window.location.href = "http://" + window.location.host') GO TO NEW LINK
+			h1.title freebrrrd
 			include ./clock.html
+			include ./board.options.html
 			div(type='submit', class='captured', id='captured', data-index='x')
 			div.chat
 				div.chatlog

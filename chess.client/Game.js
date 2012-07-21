@@ -18,13 +18,13 @@ module.exports = Game;
 Game.prototype.setClock = setClock;
 
 Game.prototype.rotate = function(){
-	if(_.contains(this.board.classList, 'rotate'))
+	if(_.contains(this.table.classList, 'rotate'))
 	{
-		this.board.classList.remove('rotate')
+		this.table.classList.remove('rotate')
 	}
 	else
 	{
-		this.board.classList.add('rotate')
+		this.table.classList.add('rotate')
 	}
 };
 
@@ -37,8 +37,9 @@ Game.prototype.move = move ;
 Game.prototype.reset = function(){
 	$('#table div img').children().unbind();
 	$('#table').empty();
-	$('#captured').empty()
-	new Game();
+	$('#captured').empty();
+	if(game.clock) game.clock.reset();
+	game.init();
 }
 
 Game.prototype.clearBoard = function(){
@@ -47,6 +48,12 @@ Game.prototype.clearBoard = function(){
 		self.move({piece: i.id, endPoint: 'captured'})
 	})
 }
+
+Game.prototype._clearBoard = function(){
+	window.socket.emit('clearBoard')
+	this.clearBoard();
+}
+
 
 Game.prototype._reset = function(){
 		// removed window.confirm

@@ -1,0 +1,37 @@
+<div class='boardOptions'>
+  <h1>
+    game
+  </h1>
+  <div class='controls'>
+    <button type='submit' onclick='game._reset()'>NEW <br />GAME</button>
+    <button type='submit' onclick='game._clearBoard()'>CLEAR <br /> PIECES</button>
+    <button type='submit'  onclick='game.rotate()'>ROTATE BOARD</button>
+  </div>
+  <br />
+  <label class='forClock'>
+    <input name='useGameClock' type='checkbox' /> 
+      show game clock
+  </label>
+  <fieldset>
+    <legend>
+      CHOOSE VARIANT
+    </legend>
+    <label>
+      <input name='variant' type='radio' checked=true /> standard chess
+    </label>
+    <br />
+    <label>
+       <input name='variant' type='radio' /> 960 Random
+    </label>
+    <br />
+    <label>
+       <input name='variant' type='radio' /> no queens
+    </label>
+    <br />
+    <label>
+       <input name='variant' type='radio' /> empty board
+       <input type='text' name='rows' value=8></input> <span class='x'>x</span>
+       <input type='text' name='columns' value=8></input> 
+    </label>
+  </fieldset>
+</div>

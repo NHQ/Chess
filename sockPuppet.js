@@ -78,6 +78,7 @@ module.exports = function(socket){
 						player._game = game;
 						player.emit('chat', {text: 'You are connected and so is your opponent.', from: bot})
 						game.players[0].emit('chat', {text: 'Your opponent has connected.', from: bot})
+						game.players[0].emit('initSync')
 					}
 				break;
 				case 2:
@@ -90,12 +91,24 @@ module.exports = function(socket){
 		}
 	})
 	
+	player.on('syncGameBoard', function(data){
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('syncGameBoard', data);
+		return
+	})
+
 	player.on('your move', function(){
 		var opponent = player.opponent();
 		if (opponent) opponent.emit('your move');
 		return
 	})
 	
+	player.on('stopClock', function(data){
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('stopClock', data);
+		return
+	})
+
 	player.on('syncRSVP', function(data){
 		var opponent = player.opponent();
 		if (opponent) opponent.emit('syncRSVP', data);
@@ -108,9 +121,21 @@ module.exports = function(socket){
 		return
 	})
 	
+	player.on('clearBoard', function(){
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('clearBoard');
+		return
+	})
+	
 	player.on('reset', function(){
 		var opponent = player.opponent();
 		if (opponent) opponent.emit('reset');
+		return
+	})
+	
+	player.on('triggerUseGameClock', function(){
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('triggerUseGameClock');
 		return
 	})
 	

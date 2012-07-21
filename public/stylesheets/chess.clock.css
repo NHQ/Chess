@@ -9,7 +9,7 @@
 .chessClock {
 	margin-top:10px;
 	position:relative;
-	width:270px;
+	width:320px;
 	height:70px;
 	background:#333;
 	color:#fff;
@@ -42,7 +42,7 @@
 .syncStart {
 	position:absolute;
 	left:220px;
-	top:11px;
+	top:13px;
 }
 
 .syncStart button {

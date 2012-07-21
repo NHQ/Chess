@@ -15,7 +15,7 @@ function init (){
 			,	right = 0;
 		
 		style.textContent += '#table {width:'+boardWidth+'px;height:'+boardWidth+'px}'
-		style.textContent += '.sidebar{left:'+(boardWidth+30)+'px}'
+		style.textContent += '.sidebar{left:'+(boardWidth+20)+'px}'
 
 		document.body.appendChild(style)
 		
@@ -41,13 +41,13 @@ function init (){
 			}
 		})
 		
-		this.board = document.getElementById('table');
+		this.table = document.getElementById('table');
 		
-		var betaboard = this.betaBoard({x:8, y:8, variant: 'standard'});
+		var board = this.board = this.betaBoard({x:8, y:8, variant: 'standard'});
 		
-		setBetaBoard(betaboard)
+		setBoard(board)
 		
-		function setBetaBoard(board){			
+		function setBoard(board){			
 			board.forEach(function(row,x){
 				
 				var x = x;
@@ -62,7 +62,7 @@ function init (){
 						div.appendChild(pieceIMG);
 					}
 					
-					game.board.appendChild(div) 
+					game.table.appendChild(div) 
 					
 				})
 				
@@ -151,6 +151,6 @@ function init (){
 			})
 		}
 
-		return this.board
+		return this.table
 
 	}

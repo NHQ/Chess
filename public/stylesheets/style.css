@@ -7,9 +7,6 @@
 		background: black ;
 		overflow-y: hidden;
 		max-width: 1150px;
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		user-select: none;
 	}
 	body, img, div {
 		margin: 0;
@@ -63,7 +60,6 @@
 		margin:10px 0;
 		top:10px;
 		width:100%;
-		min-height:80px;
 		background: #eee;
 	}
 	
@@ -94,7 +90,6 @@
 	}
 	
 	.input {
-		bottom:0;
 		width:100%;
 		border-top:5px solid #000;
 		background:#fff url('../../images/chat-bg.png');
@@ -106,7 +101,7 @@
 	.input > p:focus {
 		background:#fff;
 	}
-	
+
 	.input > p {
 		padding:2px 0 2px 2px;
 		width: 100%;
@@ -116,15 +111,10 @@
 		line-height:18px;
 		color:#000;
 		overflow: auto;
-		background:rgba(255,255,255,.5);
 		z-index:2;
 	}
 	.input > p:focus {
 		outline: none;
-	}
-	.input > .chatTip > h1 {
-			font-weight:100;
-			color:green
 	}
 
 	.chatlog div {
@@ -189,6 +179,12 @@
 		background:#333;
 		text-align:center;
 	}
+	
+	.sidebar h1.title
+	{
+		color: rgb(100,0,0);
+	}
+	
 	
 	
 	

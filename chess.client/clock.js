@@ -3,31 +3,34 @@ var Timer = require('./Timer.js')
 
 module.exports = setClock
 
-function setClock(){
+function setClock(min, sec){
 	
-	var min = document.getElementById('min'),
-			sec = document.getElementById('sec'),
-			millisecond = document.getElementById('millisecond')
-			;
+	var seconds = document.getElementById('sec')
+		, minutes = document.getElementById('min')
+	;
 	
-	if(min.value.match(/\D/) || sec.value.match(/\D/)) return alert('try again with numbers only');
+	if(min.match(/\D/) || sec.match(/\D/)) return alert('try again with numbers only');
 	
-	var clock = this.clock = new Timer( parseInt(min.value), parseInt(sec.value), handler )
+	if(game.clock)
+	{
+		game.clock.pause()
+		$('body').unbind('keydown')
+		delete game.clock	
+	} 
 	
-	function handler(minutes, seconds, ms, buzz){
-		min.value = minutes
-		sec.value = (seconds < 10) ? '0' + seconds : seconds;
-		millisecond.value = ms
+	var clock = this.clock = new Timer( parseInt(min), parseInt(sec), handler )
+	
+	function handler(m, s, ms, buzz){
+		minutes.value = m
+		seconds.value = (s < 10) ? '0' + s : s;
 		if(buzz) 
 		{
 			$('body').unbind('keydown');
-			alert('game over');
-			return 
+ 			return 
 		}
 	}
 		
 	$('body').bind('keydown', function(e){
-		console.log(e.originalEvent.srcElement.localName)
 		if(e.originalEvent.srcElement.localName == 'p'){
 			return
 		}
@@ -38,7 +41,5 @@ function setClock(){
 			socket.emit('your move')			
 		}
 	})
-	
-	
-	
+		
 }

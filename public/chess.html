@@ -10,14 +10,35 @@
 <body>
 <div class='padding'>
   <div class='sidebar'>
+    <div id='chessClock' class='chessClock standard'>
+    	<div class='setTime' id='standard'>
+    		<div class='glyphClock' onclick=''></div>
+    		<div class='inputs'>
+    			<input id='min' type='text' name='minutes' value=5></input> :
+    			<input id='sec' type='text' name='seconds' value=00></input>
+    		</div>
+    		<div class='syncStart'>
+    			<button type='submit' id='sixtysecond'>start new game</button>
+    		</div>
+    	</div>
+    	<div class='showtime' id='countdown'>
+    			<div class='glyphClock' onclick=''></div>
+    			<div class='inputs'>
+    				<input id='millisecond' type='text' name='countdown' value=600000></input>
+    			</div>
+    			<div class='syncStart'>
+    				<button type='submit' id='msbutton'>sync & start</button>
+    			</div>
+    		</div>
+    </div>
     <div class='boardOptions'>
       <h1>
         Board options
       </h1>
       <div class='controls'>
-        <button type=submit>RESET <br />BOARD</button>
-        <button type=submit>CLEAR <br /> PIECES</button>
-        <button type=submit>ROTATE BOARD</button>
+        <button type='submit' onclick='game._reset()'>RESET <br />GAME</button>
+        <button type='submit' onclick='game.rotate()'>CLEAR <br /> PIECES</button>
+        <button type='submit'  onclick='game.clearBoard()'>ROTATE BOARD</button>
       </div>
       <fieldset>
         <legend>

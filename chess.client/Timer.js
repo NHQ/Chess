@@ -8,28 +8,24 @@ function Timer (minutes, seconds, callback){
 	
 	var time = Object.create(null);
 	
+	time.config = {
+		minutes : minutes,
+		seconds : seconds
+	}
+
 	time.init = function(){
 		
 		this.emit = callback;
-		
-		this.minutes = minutes;
-		
-		this.seconds = seconds;
 					
-		this.clock = (this.seconds * 100) + (this.minutes * 6000) // total time in 1/100th seconds 
+		this.clock = (this.config.seconds * 100) + (this.config.minutes * 6000) // total time in 1/100th seconds 
 		
-		this.progress = false;
-		
-		this._min = minutes
-		
-		this._sec = seconds
+		this.progress = true;
 		
 	}
 			
 	time.tick = function(self){
 		
 		if ( ! (--self.clock >= 0) ) {
-			self.pause()
 			self.end()
 			return
 		}
@@ -43,8 +39,8 @@ function Timer (minutes, seconds, callback){
 	}
 	
 	time.start = function(){
-		
-		this.progress = true
+				
+		if(!this.progress) return;
 		
 		this.timer = setInterval(this.tick, 10, this)
 
@@ -53,20 +49,26 @@ function Timer (minutes, seconds, callback){
 	time.pause = function(){
 		
 		window.clearInterval(this.timer)
-		
-		this.progress = false
-	
+			
 	}
 	
 	time.reset = function(){
 		
-		this.emit(this.minutes, this.seconds, this.clock, false, true) // reset clock
+		this.pause();
+		
+		this.emit(this.config.minutes, this.config.seconds, this.clock, false, true) // reset clock
+		
+		this.init()
 		
 	}
 	
 	time.end = function(){
 		
+		this.progress = false;
+				
 		this.emit(0, 0, 0, true)
+		
+		this.reset();
 	
 	}
 	
