@@ -6,16 +6,17 @@ html
 		link(rel='stylesheet', href='../stylesheets/chess.clock.css')
 		link(rel='stylesheet', href='../stylesheets/sidebar.css')
 	body
-		div#table.default
-		div.sidebar
-			h1.title freebrrrd
-			include ./clock.html
-			include ./board.options.html
-			div(type='submit', class='captured', id='captured', data-index='x')
-			div.chat
-				div.chatlog
-				div.input
-					p(id='chatkey', contenteditable='true')
+		div.legs
+			div#table.default
+			div.sidebar
+				h1.title freebrrrd
+				include ./board.options.html
+				include ./clock.html
+				div(type='submit', class='captured', id='captured', data-index='x')
+				div.chat
+					div.chatlog
+					div.input
+						p(id='chatkey', contenteditable='true')
 
 
 		script(type="text/javascript", src="../javascripts/jquery-1.5.1.min.js")

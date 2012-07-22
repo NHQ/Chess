@@ -23,6 +23,7 @@ app.configure(function(){
   app.use(express.methodOverride());
 	app.use(bundle);
   app.use(app.router);
+  app.use(express.static(__dirname + '/public/images'), { maxAge: 86400000 });
   app.use(express.static(__dirname + '/public'));
 });
 

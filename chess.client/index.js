@@ -3,6 +3,7 @@ window.Game = require('./Game.js');
 var statsArray = require('stats-array')
 	,	setClockControls = require('./controls/clock.controls.js')
 	,	setChatControls = require('./controls/chat.controls.js')
+	, setUIControls = require('./controls/UI.controls.js')
 ;
 
 window.onload = function(){
@@ -13,6 +14,7 @@ window.onload = function(){
 
 	setClockControls()
 	setChatControls()
+	setUIControls()
 
 	socket.on('reset', window.game.reset)
 

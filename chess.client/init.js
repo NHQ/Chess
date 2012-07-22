@@ -14,32 +14,12 @@ function init (){
 			,	chatWidth = 320
 			,	right = 0;
 		
+		var sidebarLeft = boardWidth / 2 + winX / 2 
+		
 		style.textContent += '#table {width:'+boardWidth+'px;height:'+boardWidth+'px}'
 		style.textContent += '.sidebar{left:'+(boardWidth+20)+'px}'
 
 		document.body.appendChild(style)
-		
-		$('.captured').droppable({
-			drop: function(evt, ui){
-				var $self = $(this);
-				var piece = ui.draggable;
-				piece.css({
-					top: 0,
-					left: 0,
-					position: 'relative'
-				});
-				if ($self.attr('data-index') == piece.attr('data-checker')) 
-				{
-					return;
-				}
-				else
-				{
-					var data = {piece: piece[0].id, start: piece.attr('data-checker'), endPoint: $self[0].id};
-					game.move(data);
-					socket.emit('move', data)
-				}
-			}
-		})
 		
 		this.table = document.getElementById('table');
 		
@@ -150,6 +130,28 @@ function init (){
 				} 
 			})
 		}
+		
+		$('.captured').droppable({
+			drop: function(evt, ui){
+				var $self = $(this);
+				var piece = ui.draggable;
+				piece.css({
+					top: 0,
+					left: 0,
+					position: 'relative'
+				});
+				if ($self.attr('data-index') == piece.attr('data-checker')) 
+				{
+					return;
+				}
+				else
+				{
+					var data = {piece: piece[0].id, start: piece.attr('data-checker'), endPoint: $self[0].id};
+					game.move(data);
+					socket.emit('move', data)
+				}
+			}
+		})
 
 		return this.table
 

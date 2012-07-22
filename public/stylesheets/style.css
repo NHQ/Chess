@@ -1,12 +1,11 @@
-	html, body {
+html, body {
 		height:100%;	
-		max-width:1000px;
 		position:relative;
 	}
 	body {
 		background: black ;
 		overflow-y: hidden;
-		max-width: 1150px;
+		max-width: 1200px;
 	}
 	body, img, div {
 		margin: 0;
@@ -34,15 +33,14 @@
 	}
 	
 	#table {
-		position:absolute;
-		top:10px;
-		left:10px;
-		border-spacing: 0;
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		user-select: none;
-		-webkit-tranform-origin:50% 50%;
-	}
+			position:absolute;
+			top:10px;
+			left:10px;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			user-select: none;
+			-webkit-tranform-origin:50% 50%;
+		}
 	
 	#table > div {
 		width:100px;
@@ -184,15 +182,49 @@
 	{
 		color: rgb(100,0,0);
 	}
+	.legs {
+		position:relative;
+	}
+	
+@media all and (min-width: 1160px)
+{
+	
+	html, body {
+		height:100%;	
+		width:100%;
+		max-width: none;
+		position:relative;
+	}
+	
+	body {
+		background: black ;
+		overflow-y: hidden;
+	}
+	
+	body, img, div {
+		margin: 0;
+		padding: 0;
+	}
+
+	#table {
+		position:relative;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+		-webkit-tranform-origin:50% 50%;
+	}
 	
 	
+	.legs {
+		position:relative;
+		margin: 0 0 0 8%;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+}	
+@media all and (min-width: 1360px)
+{
+	.legs {
+		margin: 0 0 0 20%;
+	}
+}
 	
