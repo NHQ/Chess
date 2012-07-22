@@ -52,6 +52,8 @@ module.exports = function(socket){
 	})
 		
 	player.on('join', function(board){
+		
+		console.log('board', board, 'game', Boards[board])
 						
 		if(!Boards[board])
 		{
