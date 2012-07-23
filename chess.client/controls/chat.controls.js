@@ -33,4 +33,6 @@ function setChatControls(){
 		}
 	})
 	
+	return chatHTML
+	
 }

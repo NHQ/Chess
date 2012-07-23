@@ -22,8 +22,8 @@ function init (){
 		document.body.appendChild(style)
 		
 		this.table = document.getElementById('table');
-		
-		var board = this.board = this.betaBoard({x:8, y:8, variant: 'standard'});
+				
+		var board = this.board = this.betaBoard(this.config);
 		
 		setBoard(board)
 		
@@ -112,6 +112,7 @@ function init (){
 				drop: function(evt, ui){
 					var $self = $(this);
 					var piece = ui.draggable;
+					if(piece.hasClass('sidebar')) return;
 					piece.css({
 						top: 0,
 						left: 0,

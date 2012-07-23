@@ -13,7 +13,7 @@ window.onload = function(){
 	window.socket = io.connect('http://'+window.location.host);
 
 	setClockControls()
-	setChatControls()
+	game.chat = setChatControls()
 	setUIControls()
 
 	socket.on('reset', window.game.reset)
@@ -28,7 +28,7 @@ window.onload = function(){
 	})
 
 	socket.on('connected', function(){
-		socket.emit('join', window.location.pathname.slice(1))
+		socket.emit('join', {location: window.location.pathname.slice(1), ua: window.navigator.userAgent})
 	})
 
 	socket.on('move', function (data) {

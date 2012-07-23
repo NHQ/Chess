@@ -7,7 +7,7 @@ function clockControls(){
 		, min = document.getElementById('min')
 		,	sec = document.getElementById('sec')
 		, chessClock = $('#chessClock')
-		, chessClockControl = $('input[name=useGameClock]');
+		, chessClockControl = $('input[name=useGameClock]')
 	;
 	
 	chessClock.hide()
@@ -15,6 +15,8 @@ function clockControls(){
 	$sync.click(function(e){
 
 		window.game.setClock(min.value, sec.value);
+		
+		game.chat({text: '//* Press the space bar or click the clock at the end of your move *//', from:''})
 
 		socket.emit( 'syncRSVP')
 		
@@ -40,6 +42,10 @@ function clockControls(){
 		
 		game.clock.end()
 		
+		$stop.hide()
+		
+		$sync.show()
+		
 	})
 	
 	socket.on('syncRSVP', function(data){
@@ -50,7 +56,8 @@ function clockControls(){
 				window.game.setClock(min.value, sec.value);
 				socket.emit('your move');
 				$sync.hide();
-				$stop.show()
+				$stop.show();
+				game.chat({text: '//* Press the space bar or click the clock at the end of your move *//', from:''})
 		}
 		
 	})

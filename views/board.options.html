@@ -14,34 +14,34 @@
         <p class='instructions'>SHOW GAME CLOCK</p>
     </label>
   </fieldset>
-  <fieldset>
+  <fieldset id='variantSelector'>
     <legend>
       SELECT VARIANT
     </legend>
     <label>
-      <input name='variant' type='radio' checked=true />
+      <input name='variant' id='standard' type='radio' checked=true />
       <div class='radio'></div>
        <p class='instructions'>STANDARD CHESS</p>
     </label>
     <br />
     <label>
-       <input name='variant' type='radio' />
+       <input name='variant' id='fischerrandom' type='radio' />
        <div class='radio'></div>
-        <p class='instructions'>960 FISCHER-RANDOM</p>
+        <p class='instructions'>FISCHER-RANDOM 960</p>
     </label>
     <br />
     <label>
-       <input name='variant' type='radio' />
+       <input name='variant' id='princes' type='radio' />
        <div class='radio'></div>
-        <p class='instructions'>PRINCES 7x7</p>
+        <p class='instructions'>MACHIAVELLI 7x7</p>
     </label>
     <br />
-    <label>
-       <input name='variant' type='radio' />
+    <label style='display:none'>
+       <input name='variant' id='blank' type='radio' />
        <div class='radio'></div>
         <p class='instructions'>EMPTY BOARD</p>
-       <input type='text' name='rows' value=8></input> <span class='x'>x</span>
-       <input type='text' name='columns' value=8></input> 
+       <input type='text' name='rows' id='gridX' value=8></input> <span class='x'>x</span>
+       <input type='text' name='columns' id='gridY' value=8></input> 
     </label>
   </fieldset>
 </div>

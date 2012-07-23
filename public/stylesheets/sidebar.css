@@ -1,14 +1,20 @@
 .padding {
 	padding: 20px;
 }
-
+.giveFeedBack {
+	color:gold;
+}
 .sidebar {
 	position:absolute;
 	top:11px;
 	width:320px;
-	opacity:1;
-	-webkit-transition: opacity 206ms;
+	opacity:.55;
+	transition: opacity 206ms;
 	font-family:helvetica;
+	background:#000;
+	border:20px solid #000;
+	border-top:10px solid #000;
+	border-radius:5px;
 }
 .sidebar label {
 	display:block;
@@ -102,6 +108,7 @@ input[name=rows], input[name=columns] {
 	margin-bottom:10px;
 	background:#333;
 	text-align:center;
+	transform: skewX(-11deg) translateX(5px);
 }
 
 .sidebar h2 {
@@ -119,21 +126,13 @@ input[name=rows], input[name=columns] {
 	padding-bottom:10px;
 	max-height:42px;
 	overflow:hidden;
-	-webkit-transition: all 167ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	   -moz-transition: all 167ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	    -ms-transition: all 167ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	     -o-transition: all 167ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	        transition: all 167ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+  transition: all 167ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
 }
-.boardOptions > h1:hover {
+.boardOptions > h1:hover, .sidebar h1:hover {
 	cursor:pointer;
 }
 .boardOptions.hoverd{
-	-webkit-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	   -moz-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	    -ms-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	     -o-transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000); 
-	        transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+  transition: all 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
 	max-height:380px;
 }
 .controls{

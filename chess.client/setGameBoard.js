@@ -1,5 +1,7 @@
 var createBoard = require('./createBoard.js')
 	,	standardChess = require('./variations/standardChess.js')
+	,	princes = require('./variations/princes.js')
+	,	fischerrandom = require('./variations/fischerrandom.js')
 ;
 
 /*
@@ -25,6 +27,12 @@ function setGameBoard(opts){
 			var board = standardChess(board)
 			break;
 		case 'blank':
+			break;
+		case 'princes':
+			var board = princes(board)
+			break;
+		case 'fischerrandom':
+			var board = fischerrandom(board)
 			break;
 	}
 	

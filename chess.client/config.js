@@ -1,9 +1,5 @@
-module.exports = config
-
-var config = Object.create(null)
-
-config.x = 8
-
-config.y = 8
-
-config.variant = 'standard'
+module.exports = {
+	x: 8,
+	y: 8,
+	variant: 'standard'
+}

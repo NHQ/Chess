@@ -7,6 +7,7 @@ function setClock(min, sec){
 	
 	var seconds = document.getElementById('sec')
 		, minutes = document.getElementById('min')
+		,	glyphClock = $('.glyphClock')
 	;
 	
 	if(min.match(/\D/) || sec.match(/\D/)) return alert('try again with numbers only');
@@ -15,6 +16,7 @@ function setClock(min, sec){
 	{
 		game.clock.pause()
 		$('body').unbind('keydown')
+		glyphClock.unbind('click')
 		delete game.clock	
 	} 
 	
@@ -29,6 +31,12 @@ function setClock(min, sec){
  			return 
 		}
 	}
+
+	glyphClock.bind('click', function(e){
+		e.preventDefault();
+		clock.pause();
+		socket.emit('your move')
+	})
 		
 	$('body').bind('keydown', function(e){
 		if(e.originalEvent.srcElement.localName == 'p'){

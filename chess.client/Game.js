@@ -2,7 +2,10 @@ var	init = require('./init.js')
 	,	move = require('./handleMove.js')
   , setGameBoard = require('./setGameBoard.js')
 	,	setClock = require('./clock.js')
+	,	config = require('./config.js')
 ;
+
+module.exports = Game;
 
 function Game (moves){
 	var self = this;
@@ -13,7 +16,7 @@ function Game (moves){
 	return self
 }
 
-module.exports = Game;
+Game.prototype.config = config;
 
 Game.prototype.setClock = setClock;
 

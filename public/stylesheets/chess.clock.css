@@ -23,7 +23,9 @@
 }
 .glyphClock:hover {
 	cursor:pointer;
+	transform: rotate(11deg);
 }
+
 .chessClock > * {
 	padding:10px;		
 }
