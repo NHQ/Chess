@@ -1,32 +1,53 @@
 module.exports = init;
 
-function init (){
+function init (board){
 	
-		var winX = $('body').width(), winY = window.innerHeight;
+	var winX = $('body').width()
+			, winY = window.innerHeight
+	;
+	
+	this.table = document.getElementById('table');
+	
+	var checker = Math.floor((Math.min(winX, winY) - 20) / 8)
+		, style = document.createElement('style');
 
-		var checker = Math.floor((Math.min(winX, winY) - 20) / 8)
-			, style = document.createElement('style');
+	checker = Math.min(checker, 100);
+	style.textContent = '#table div {height:'+checker+'px; width:'+checker+'px;}';
+	
+	var boardWidth = (checker * 8)
+		,	chatWidth = 320
+		,	right = 0;
+	
+	var sidebarLeft = boardWidth / 2 + winX / 2 
+	
+	style.textContent += '#table {width:'+boardWidth+'px;height:'+boardWidth+'px}'
+	style.textContent += '.sidebar{left:'+(boardWidth+10)+'px}'
 
-		checker = Math.min(checker, 100);
-		style.textContent = '#table div {height:'+checker+'px; width:'+checker+'px;}';
+	document.body.appendChild(style)
+	console.log(board)
+	if(!board)
+	{				
+		console.log('no board')
 		
-		var boardWidth = (checker * 8)
-			,	chatWidth = 320
-			,	right = 0;
-		
-		var sidebarLeft = boardWidth / 2 + winX / 2 
-		
-		style.textContent += '#table {width:'+boardWidth+'px;height:'+boardWidth+'px}'
-		style.textContent += '.sidebar{left:'+(boardWidth+20)+'px}'
-
-		document.body.appendChild(style)
-		
-		this.table = document.getElementById('table');
-				
 		var board = this.board = this.betaBoard(this.config);
 		
 		setBoard(board)
 		
+		socket.emit('boardSet', board)		
+	}
+
+	else 
+	{
+	
+		console.log('board')
+	
+	
+		var board = this.board = board;
+	
+		setBoard(board)
+		
+	}	
+				
 		function setBoard(board){			
 			board.forEach(function(row,x){
 				

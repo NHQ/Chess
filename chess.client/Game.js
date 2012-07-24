@@ -7,10 +7,10 @@ var	init = require('./init.js')
 
 module.exports = Game;
 
-function Game (moves){
+function Game (){
 	var self = this;
 	window.game = this;
-	this.moves = moves ? moves : [];
+	this.moves = [];
 	this.init();
 	window.chessGame = this;
 	return self
@@ -37,12 +37,12 @@ Game.prototype.init = init;
 
 Game.prototype.move = move ;
 
-Game.prototype.reset = function(){
+Game.prototype.reset = function(board){
 	$('#table div img').children().unbind();
 	$('#table').empty();
 	$('#captured').empty();
 	if(game.clock) game.clock.reset();
-	game.init();
+	game.init(board);
 }
 
 Game.prototype.clearBoard = function(){

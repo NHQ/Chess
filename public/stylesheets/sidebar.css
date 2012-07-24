@@ -2,11 +2,26 @@
 	padding: 20px;
 }
 .giveFeedBack {
-	color:gold;
+	color:OrangeRed;
+	background:#000;
+	border:1px solid #999;
+	padding:5px;
+}
+.opponentChat {
+	color:#333;
+	background:#eee;
+	border:1px solid #000;
+	padding:5px;
+}
+.selfChat {
+	color:#eee;
+	background:#333;
+	border:1px solid #999;
+	padding:5px;
 }
 .sidebar {
 	position:absolute;
-	top:11px;
+	top:1px;
 	width:320px;
 	opacity:.55;
 	transition: opacity 206ms;

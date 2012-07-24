@@ -6,19 +6,24 @@ var util = require('util')
 	, Game = function(path, player){
 			var game = {}
 			game.id = path
+			game.moves = [];
 			game.players = [];
 			game.players.push(player);
 			player._game = game;
 			return game
 	}
 	, Player = require('./game.server/Player.js')
-	, bot = ''
+	, bot = 'bot'
+	, clientConnections = 0
+;
 
 var feedback = fs.createWriteStream('./feedback.'+Date.now()+'.txt')
 
 module.exports = function(socket){
 		
 	var player = Players[socket.id] = socket;
+	
+	++clientConnections;
 	
 	player.opponent = function(){
 		var self = this;
@@ -31,6 +36,7 @@ module.exports = function(socket){
 	player.emit('connected')
 	
 	player.on('disconnect', function(){
+		--clientConnections;
 		var	game = player._game;
 		if(!game) return;
 		game.players.forEach(function(e,i){
@@ -41,7 +47,7 @@ module.exports = function(socket){
 			}
 			else
 			{
-				game.players[i].emit('chat', {text: '/ * Your opponent has disconnected. */', from: bot})
+				game.players[i].emit('chat', {text: 'Your opponent has disconnected.', from: bot})
 			}
 		})
 		if(!game.players.length)
@@ -59,7 +65,8 @@ module.exports = function(socket){
 		if(!Boards[board])
 		{
 			Boards[board] = new Game(board, player)
-			player.emit('chat', {text: '/* You are connected to a new board. Send the link to your opponent. */', from: bot})
+			player.emit('chat', {text: 'You are connected to a new board. Send the link to your opponent.', from: bot})
+			player.emit('join')
 		}
 		else
 		{
@@ -68,20 +75,25 @@ module.exports = function(socket){
 			{
 				case 0:
 					Boards[board] = new Game(board, player)
-					player.emit('chat', {text: '/* You are connected to a new board. Send the link to your opponent. */', from: bot})
+					player.emit('chat', {text: 'You are connected to a new board. Send the link to your opponent.', from: bot})
+					player.emit('join')
 				break;
 				case 1:
 					if(game.players[0].id == player.id)
 					{
-						player.emit('chat', {text: '/* I seem to be returning to ' + game.id + ' /*', from: bot})
+						player.emit('chat', {text: 'You seem to be returning to ' + game.id, from: bot})
+						player.emit('join')
+					
 					}
 					else
 					{
 						game.players.push(player)
 						player._game = game;
-						player.emit('chat', {text: '/* You are connected and so is your opponent. */', from: bot})
-						game.players[0].emit('chat', {text: '/* Your opponent has connected. /*', from: bot})
+						player.emit('chat', {text: 'You are connected and so is your opponent.', from: bot})
+						game.players[0].emit('chat', {text: 'Your opponent has connected.', from: bot})
 						game.players[0].emit('initSync')
+						player.emit('join')
+						
 					}
 				break;
 				case 2:
@@ -92,6 +104,13 @@ module.exports = function(socket){
 				break;
 			}
 		}
+	})
+	
+	player.on('boardSet', function(data){
+		player._game.board = data;
+		var opponent = player.opponent();
+		if (opponent) opponent.emit('setBoard', data);
+		return
 	})
 	
 	player.on('syncGameBoard', function(data){
@@ -123,7 +142,7 @@ module.exports = function(socket){
 		if(txt.match('#feedback') || txt.match('#bug'))
 		{
 			feedback.write(player._userAgent + '\n' + data.text + '\n', 'utf8');
-			player.emit('chat', {text:'/* Thank you for your feedback. */', from: bot})
+			player.emit('chat', {text:'Thank you for your feedback.', from: bot})
 			return
 		}
 		var opponent = player.opponent();
@@ -151,8 +170,13 @@ module.exports = function(socket){
 	
 	player.on('move', function(data){
 		var opponent = player.opponent();
+		player._game.moves.push(data);
 		if (opponent) opponent.emit('move', data);
 		return
+	})
+	
+	player.on('clientConnections', function(){
+		player.emit('clientConnections', clientConnections)
 	})
 	
 }

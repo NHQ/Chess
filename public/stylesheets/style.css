@@ -81,12 +81,13 @@ html, body {
 		width:100%;
 		height:350px;
 		background:rgba(255,255,255, .3);
-		overflow:hidden;
 	}
 	
 	.chatlog {
 		height:245px;
-		overflow:auto;
+		overflow-y:auto;
+		overflow-x:hidden;
+		width:100%;
 	}
 	
 	.input {
@@ -118,17 +119,21 @@ html, body {
 	}
 
 	.chatlog div {
-		padding: 5px 10px;
+		padding: 10px 0 0;
+		margin-left:10px;
+		margin-bottom:10px;
+		max-width:300px;
+		margin-right:10px;
+		overflow:hidden;
 	}
 	
 	.chatlog p {
 		font-size:18px;
 		line-height:21px;
-		padding: 3px;
-		color:#eee;
-		display: inline;
-		transition: background 1s ease-in;
-		animation: glow 1222ms 1;
+		-webkit-margin-before: 0em;
+		-webkit-margin-after: 0em;
+		overflow:hidden;
+			text-overflow:ellipsis;
 	}
 	
 	@-webkit-keyframes glow {
