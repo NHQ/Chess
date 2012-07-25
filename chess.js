@@ -33,7 +33,7 @@ app.configure('development', function(){
 app.get('/board/:gameID', routes.board);
 app.get('/', routes.index);
 
-var server = http.createServer(app).listen(app.get('port'), '127.0.0.1', function(){
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
