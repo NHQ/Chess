@@ -36,7 +36,7 @@ var server = http.createServer(app).listen(app.get('port'), '127.0.0.1', functio
   console.log("Express server listening on port " + app.get('port'));
 });
 
-var sockets = io.listen(3301);
+var sockets = io.listen(3333);
 	sockets.configure('production', function(){
 		sockets.enable('browser client minification');  // send minified client
 		sockets.enable('browser client etag');          // apply etag caching logic based on version number
