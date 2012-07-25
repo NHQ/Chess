@@ -18,7 +18,6 @@ app.configure(function(){
   app.use(express.cookieParser());
   app.use(express.session({secret: 'cocofarts'}));
   app.use(express.favicon(__dirname + '/public/favicon.png'));
-  app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
 	app.use(bundle);
@@ -37,5 +36,18 @@ var server = http.createServer(app).listen(app.get('port'), '127.0.0.1', functio
   console.log("Express server listening on port " + app.get('port'));
 });
 
-io.listen(server).sockets.on('connection', sockPuppet)
-
+var sockets = io.listen(server);
+	sockets.configure('production', function(){
+		sockets.enable('browser client minification');  // send minified client
+		sockets.enable('browser client etag');          // apply etag caching logic based on version number
+		sockets.enable('browser client gzip');          // gzip the file
+		sockets.set('log level', 1);                    // reduce logging
+		sockets.set('transports', [                     // enable all transports (optional if you want flashsocket)
+		    'websocket'
+		  , 'flashsocket'
+		  , 'htmlfile'
+		  , 'xhr-polling'
+		  , 'jsonp-polling'
+		]);
+	});
+	sockets.on('connection', sockPuppet)
