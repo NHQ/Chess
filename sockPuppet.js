@@ -89,7 +89,7 @@ module.exports = function(socket){
 					{
 						game.players.push(player)
 						player._game = game;
-						player.emit('chat', {text: 'Your opponent is connect and your boards are synced. Play on, or click GAME for options', from: bot})
+						player.emit('chat', {text: 'Your opponent is connected and your boards are synced. Play on, or click GAME for options', from: bot})
 						game.players[0].emit('chat', {text: 'Your opponent has connected, and your boards have synced. Play on, or click GAME for options.', from: bot})
 						game.players[0].emit('initSync')
 						player.emit('join')
