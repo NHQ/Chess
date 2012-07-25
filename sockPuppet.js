@@ -17,7 +17,7 @@ var util = require('util')
 	, clientConnections = 0
 ;
 
-var feedback = fs.createWriteStream('./feedback.'+Date.now()+'.txt')
+var feedback = fs.createWriteStream('./logs/feedback.'+Date.now()+'.txt')
 
 module.exports = function(socket){
 		
@@ -89,8 +89,8 @@ module.exports = function(socket){
 					{
 						game.players.push(player)
 						player._game = game;
-						player.emit('chat', {text: 'You are connected and so is your opponent.', from: bot})
-						game.players[0].emit('chat', {text: 'Your opponent has connected.', from: bot})
+						player.emit('chat', {text: 'Your opponent is connect and your boards are synced. Play on, or click GAME for options', from: bot})
+						game.players[0].emit('chat', {text: 'Your opponent has connected, and your boards have synced. Play on, or click GAME for options.', from: bot})
 						game.players[0].emit('initSync')
 						player.emit('join')
 						

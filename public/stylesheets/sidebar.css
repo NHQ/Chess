@@ -1,6 +1,11 @@
 .padding {
 	padding: 20px;
 }
+.signed {
+	color:000066;
+	padding:6px;
+	text-decoration:none;
+}
 .giveFeedBack {
 	color:OrangeRed;
 	background:#000;

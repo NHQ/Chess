@@ -1,7 +1,7 @@
 !!!
 html
 	head
-		title HTML5 Chess Set
+		title CHESS
 		link(rel='stylesheet', href='../stylesheets/style.css')
 		link(rel='stylesheet', href='../stylesheets/chess.clock.css')
 		link(rel='stylesheet', href='../stylesheets/sidebar.css')
@@ -20,8 +20,10 @@ html
 					div.chatlog
 					div.input
 						p(id='chatkey', contenteditable='true')
-				p.giveFeedBack Add the #feedback tag to in your chat message to send feedback & bug reports. Thanks!
-
+				p.giveFeedBack Add the #feedback tag to your chat message to send feedback & bug reports.
+				p.giveFeedBack This is an unrestricted, virtual chess board. You must call your own check.
+				p(class='opponentChat') created by
+					a(class='signed', href='http://twitter.com/astromanies', target='_blank') Johnny
 
 		script(type="text/javascript", src="../javascripts/jquery-1.5.1.min.js")
 		script(type="text/javascript", src="../javascripts/underscore-min.js")
