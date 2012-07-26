@@ -24,7 +24,7 @@ function init (board){
 	style.textContent += '.sidebar{left:'+(boardWidth+10)+'px}'
 
 	document.body.appendChild(style)
-	console.log(board)
+
 	if(!board)
 	{				
 		console.log('no board')
@@ -37,10 +37,7 @@ function init (board){
 	}
 
 	else 
-	{
-	
-		console.log('board')
-	
+	{	
 	
 		var board = this.board = board;
 	
@@ -71,12 +68,21 @@ function init (board){
 						
 			function piece(obj, x, y){
 				var o = obj.occupant;
+				var div = document.createElement('div');
+				div.classList.add('piece');
+				div.classList.add(o.type + '_' + o.color);
+				div.id = 'p' + obj.ordinal;
+				div.setAttribute('data-checker', [x,y].join(','));
+				dragnMotion(div);
+				return div
+				/*
 				var img = document.createElement('img');
 				img.src = '../images/chesspieces/'+[o.type, o.color].join('.')+'.png'
 				img.id = 'p' + obj.ordinal;
 				img.setAttribute('data-checker', [x,y].join(','))
 				dragnMotion(img)
 				return img
+				*/
 			}
 			
 			function Div (ordinal, x, y){
@@ -103,13 +109,13 @@ function init (board){
 			$el.draggable({
 				helper: function(){
 					var div = document.createElement('div');
-					this.dragImg = document.createElement('img');
-					this.dragImg.src = this.src;
-					this.dragImg.width = this.width;
-					this.dragImg.classList.add('dragImg');
+					this.dragImg = $(this).clone()[0]
+//					this.dragImg.src = this.src;
+	//				this.dragImg.width = this.width;
+		//			this.dragImg.classList.add('dragImg');
 					document.body.appendChild(this.dragImg)
-					div.classList.add('helper');
-					return div
+					this.dragImg.classList.add('helper');
+					return this.dragImg
 				},
 				start: function(evt, ui){	
 					this.classList.add('fade')

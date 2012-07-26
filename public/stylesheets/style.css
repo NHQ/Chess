@@ -63,9 +63,14 @@ html, body {
 		background: #eee;
 	}
 	
-	.captured img {
-		width:11%;
+	.captured .piece {
+		width:30px;
+		height:30px;
 		overflow:auto;
+		display:inline-block;
+	}
+	.captured .piece:hover {
+		cursor:pointer;
 	}
 	button {
 		position:relative;

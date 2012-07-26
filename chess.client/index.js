@@ -8,7 +8,9 @@ var statsArray = require('stats-array')
 
 window.onload = function(){
 	
-	window.socket = io.connect('http://'+window.location.host + ':3333');
+	var origin = window.location.host.match('localhost') ? '127.0.0.1' : window.location.host
+	
+	window.socket = io.connect('http://'+origin + ':3333');
 	
 	socket.on('disconnect', function(){
 		socket.disconnect();

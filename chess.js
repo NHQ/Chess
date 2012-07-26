@@ -9,6 +9,8 @@ var express = require('express')
 	, bundle = browserify(__dirname + '/chess.client/index.js')
 ;
 
+var origin = process.env.NODE_ENV === 'production' ? '74.207.246.247' : '127.0.0.1'
+
 var app = express();
 
 app.configure(function(){
@@ -32,7 +34,7 @@ app.configure('development', function(){
 app.get('/board/:gameID', routes.board);
 app.get('/', routes.index);
 
-var server = http.createServer(app).listen(app.get('port'), '127.0.0.1', function(){
+var server = http.createServer(app).listen(app.get('port'), origin, function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
