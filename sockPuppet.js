@@ -4,8 +4,8 @@ var util = require('util')
 	,	Boards = {}, $b = 0
 	,	Players = {}, $p = 0
 	, Game = function(path, player){
-			var game = {}
-			game.id = path
+			var game = {};
+			game.id = path;
 			game.moves = [];
 			game.players = [];
 			game.players.push(player);
@@ -92,7 +92,7 @@ module.exports = function(socket){
 						player.emit('chat', {text: 'Your opponent is connected and your boards are synced. Play on, or click GAME for options', from: bot})
 						game.players[0].emit('chat', {text: 'Your opponent has connected, and your boards have synced. Play on, or click GAME for options.', from: bot})
 						game.players[0].emit('initSync')
-						player.emit('join')
+						player.emit('join', {board: game.board, moves: game.moves})
 						
 					}
 				break;

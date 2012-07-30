@@ -1,6 +1,6 @@
 var createBoard = require('./createBoard.js')
 	,	standardChess = require('./variations/standardChess.js')
-	,	princes = require('./variations/princes.js')
+	,	princes = require('./variations/random.princes.js')
 	,	fischerrandom = require('./variations/fischerrandom.js')
 ;
 

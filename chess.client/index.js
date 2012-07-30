@@ -24,14 +24,12 @@ window.onload = function(){
 	socket.on('connected', function(){
 		
 		var chat = setChatControls()
-		
-//		game.chat({text: '// connecting to game server... //', from: ''})
-		
+				
 		socket.emit('join', {location: window.location.pathname.slice(1), ua: window.navigator.userAgent})
 
-		socket.on('join', function(){
+		socket.on('join', function(data){
 			
-			new Game();
+			new Game(data);
 			game.chat = chat;
 			gameInited()
 			setClockControls()
@@ -71,7 +69,6 @@ window.onload = function(){
 				var data = Object.create(null)
 				data.seconds = game.clock.config.seconds
 				data.minutes = game.clock.config.minutes
-				socket.emit('syncGameClock', data)			
 			}
 		})
 		

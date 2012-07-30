@@ -7,11 +7,10 @@ var	init = require('./init.js')
 
 module.exports = Game;
 
-function Game (){
+function Game ($game){
 	var self = this;
 	window.game = this;
-	this.moves = [];
-	this.init();
+	this.init($game);
 	window.chessGame = this;
 	return self
 }
@@ -47,7 +46,7 @@ Game.prototype.reset = function(board){
 
 Game.prototype.clearBoard = function(){
 	var self = this;
-	$('#table div > img').each(function(e,i){
+	$('#table > div > div').each(function(e,i){
 		self.move({piece: i.id, endPoint: 'captured'})
 	})
 }

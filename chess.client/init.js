@@ -1,6 +1,6 @@
 module.exports = init;
 
-function init (board){
+function init ($game){
 	
 	var winX = $('body').width()
 			, winY = window.innerHeight
@@ -25,11 +25,12 @@ function init (board){
 
 	document.body.appendChild(style)
 
-	if(!board)
+	if(!$game)
 	{				
-		console.log('no board')
 		
 		var board = this.board = this.betaBoard(this.config);
+		
+		this.moves = []
 		
 		setBoard(board)
 		
@@ -39,10 +40,15 @@ function init (board){
 	else 
 	{	
 	
-		var board = this.board = board;
-	
-		setBoard(board)
-		
+		var board = this.board = $game.board;
+		this.moves = $game.moves || []
+		setBoard(board);
+		if ($game.moves) 
+			{
+					$game.moves.forEach(function(move){
+					game.move(move)
+				})
+			}
 	}	
 				
 		function setBoard(board){			
@@ -109,18 +115,18 @@ function init (board){
 			$el.draggable({
 				helper: function(){
 					var div = document.createElement('div');
-					this.dragImg = $(this).clone()[0]
-//					this.dragImg.src = this.src;
-	//				this.dragImg.width = this.width;
-		//			this.dragImg.classList.add('dragImg');
+					this.dragImg = this.dragImg || $(this).clone()[0]
+					this.dragImg.classList.add('dragImg');
 					document.body.appendChild(this.dragImg)
-					this.dragImg.classList.add('helper');
-					return this.dragImg
+					div.classList.add('helper');
+					return div
 				},
 				start: function(evt, ui){	
 					this.classList.add('fade')
 				},
 				drag: function(evt, ui){
+					console.log('ui.position ', ui.position)
+					console.log('ui.offset ', ui.offset)
 					$(this.dragImg).css({
 						top: evt.pageY - 50,
 						left: evt.pageX - 50
@@ -140,11 +146,6 @@ function init (board){
 					var $self = $(this);
 					var piece = ui.draggable;
 					if(piece.hasClass('sidebar')) return;
-					piece.css({
-						top: 0,
-						left: 0,
-						position: 'relative'
-					});
 					if ($self.attr('data-index') == piece.attr('data-checker')) 
 					{
 						return;
@@ -165,8 +166,7 @@ function init (board){
 				var piece = ui.draggable;
 				piece.css({
 					top: 0,
-					left: 0,
-					position: 'relative'
+					left: 0
 				});
 				if ($self.attr('data-index') == piece.attr('data-checker')) 
 				{
