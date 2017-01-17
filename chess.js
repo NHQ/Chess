@@ -43,7 +43,7 @@ var sockets = io.listen(3333);
 		sockets.enable('browser client minification');  // send minified client
 		sockets.enable('browser client etag');          // apply etag caching logic based on version number
 		sockets.enable('browser client gzip');          // gzip the file
-		sockets.set('log level', 1);                    // reduce logging
+		sockets.set('log level', 9);                    // reduce logging
 		sockets.set('transports', [                     // enable all transports (optional if you want flashsocket)
 		    'websocket'
 		  , 'flashsocket'
