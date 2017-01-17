@@ -9,7 +9,7 @@ var express = require('express')
 	, bundle = browserify(__dirname + '/chess.client/index.js')
 ;
 
-var origin = process.env.NODE_ENV === 'production' ? '74.207.246.247' : '127.0.0.1'
+var origin = process.env.NODE_ENV === 'production' ? '74.207.246.247' : '0.0.0.0'
 
 var app = express();
 

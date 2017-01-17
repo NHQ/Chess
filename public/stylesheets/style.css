@@ -12,7 +12,7 @@ html, body {
 		padding: 0;
 	}
 		
-	.rotate, .rotate img {
+	.rotate, .rotate > div {
 		tranform-origin: 50% 50%;	
 		transform: rotate(180deg);
 	}
