@@ -16,7 +16,7 @@ var origin = process.argv[2] || '0.0.0.0'
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3301);
+  app.set('port', Number(process.argv[3])|| 3301);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.cookieParser());
