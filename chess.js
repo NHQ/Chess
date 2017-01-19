@@ -18,11 +18,10 @@ var app = express();
 
 app.configure(function(){
   app.set('port', port);
-  app.set('origin', origin);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.cookieParser());
-  app.use(express.session({secret: 'cocofarts'}));
+  app.use(express.session({secret: 'bearsnorts'}));
   app.use(express.favicon(__dirname + '/public/favicon.png'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -47,7 +46,7 @@ var sockets = io.listen(3333);
 		sockets.enable('browser client minification');  // send minified client
 		sockets.enable('browser client etag');          // apply etag caching logic based on version number
 		sockets.enable('browser client gzip');          // gzip the file
-		sockets.set('log level', 9);                    // reduce logging
+		sockets.set('log level', 1);                    // reduce logging
 		sockets.set('transports', [                     // enable all transports (optional if you want flashsocket)
 		    'websocket'
 		  , 'flashsocket'
