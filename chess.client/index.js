@@ -9,7 +9,7 @@ var statsArray = require('stats-array')
 window.onload = function(){
 	
 	var origin = window.location.hostname
-
+  var port = window.location.port
   console.log(origin)
 
 	window.socket = io.connect('http://'+origin + ':3333');

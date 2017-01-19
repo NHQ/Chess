@@ -10,13 +10,15 @@ var express = require('express')
 ;
 
 var origin = process.argv[2] || '0.0.0.0'
+var port = Number(process.argv[3]) || 3301
 
 //var origin = process.env.NODE_ENV === 'production' ? '74.207.246.247' : '0.0.0.0'
 
 var app = express();
 
 app.configure(function(){
-  app.set('port', Number(process.argv[3])|| 3301);
+  app.set('port', port);
+  app.set('origin', origin);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.cookieParser());
