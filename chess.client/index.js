@@ -10,6 +10,8 @@ window.onload = function(){
 	
 	var origin = window.location.hostname
 
+  console.log(origin)
+
 	window.socket = io.connect('http://'+origin + ':3333');
 	
 	socket.on('disconnect', function(){
