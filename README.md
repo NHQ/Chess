@@ -1,4 +1,4 @@
-#**Chess Foo**
+# Chess Foo 
 
 ![chess foo](chess_foo.png)
 
